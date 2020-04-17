@@ -49,13 +49,13 @@ document.addEventListener('deviceready', function () {
             //
             localStorage.ipServidor = ip;
             ipServidor = ip;
-            urlServer = 'http://' + ip + '/VisualizadorPhp/';
+            urlServer = 'http://' + ip + '/VisualizadorPortalPhp/';
             comprobarEmpresa();
         });
     } else {
         //
         ipServidor = localStorage.ipServidor;
-        urlServer = 'http://' + ipServidor + '/VisualizadorPhp/';
+        urlServer = 'http://' + ipServidor + '/VisualizadorPortalPhp/';
         comprobarEmpresa();
     }
 });
@@ -77,7 +77,7 @@ function iniciar() {
         //
         visualizador = localStorage.visualizador;
         //
-        traerIpVisualizador();
+        establecerUrls();
         cargarListaVisualizadores(2);
     }
     //
@@ -101,7 +101,7 @@ function editarIpServidor() {
         //
         localStorage.ipServidor = ip;
         ipServidor = ip;
-        urlServer = 'http://' + ip + '/VisualizadorPhp/';
+        urlServer = 'http://' + ip + '/VisualizadorPortalPhp/';
         comprobarEmpresa();
     });
 }
@@ -183,29 +183,20 @@ function visualizadorSeleccionado(valor) {
     visualizador = valor;
     localStorage.visualizador = visualizador;
     //
-    traerIpVisualizador();
+    establecerUrls();
     //
     app.popup.close('.popover-visualizadores', true);
 }
 
 //
-function traerIpVisualizador() {
+function establecerUrls() {
     //
-    app.request.post(urlServer + 'Read/traerIpVisualizador', {visualizador: visualizador, empresa: idEmpresa},
-            function (rsp) {
-                //
-                var data = JSON.parse(rsp);
-                //
-                if (data.length !== 2) {
-                    //
-                    urlImagen = 'http://' + ipServidor + '/Magisoftv1Medico/imagenes/' + data[0]['ipVisualizador'] + '/';
-                    urlVideos = 'http://' + ipServidor + '/Magisoftv1Medico/videos/' + data[0]['ipVisualizador'] + '/';
-                    //
-                    consultarTurnos();
-                    cargarConfig();
-                    cargarVideos();
-                }
-            });
+    urlImagen = 'http://' + ipServidor + '/MagisoftV1/Visualizador1/Imagenes/' + idEmpresa + '/' + visualizador + '/';
+    urlVideos = 'http://' + ipServidor + '/MagisoftV1/Visualizador1/Videos/' + idEmpresa + '/' + visualizador + '/';
+    //
+    consultarTurnos();
+    cargarConfig();
+    cargarVideos();
 }
 
 //

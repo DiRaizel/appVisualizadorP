@@ -9,6 +9,9 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.visualizadorP"
+    },
+    "phonegap-plugin-speech-synthesis": {
+      "PACKAGE_NAME": "com.visualizadorP"
     }
   },
   "dependent_plugins": {}

@@ -14,14 +14,16 @@
   "license": "Apache-2.0",
   "dependencies": {
     "cordova-android": "^8.1.0",
-    "cordova-browser": "^6.0.0"
+    "cordova-browser": "^6.0.0",
+    "phonegap-plugin-speech-synthesis": "git+https://github.com/macdonst/SpeechSynthesisPlugin.git"
   },
   "devDependencies": {
     "cordova-plugin-whitelist": "^1.3.4"
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "phonegap-plugin-speech-synthesis": {}
     },
     "platforms": [
       "android",
